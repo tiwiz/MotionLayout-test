@@ -1,20 +1,19 @@
 package net.orgiu.tickets
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
-import net.orgiu.tickets.utils.EndAnimation
 
 class MainActivity : AppCompatActivity() {
 
-    private val endAnimation = EndAnimation()
+    private val animationManager = AnimationManager()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        validation_container.setTransitionListener(endAnimation)
+        animationManager.bindTo(validation_container, savedInstanceState)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -23,17 +22,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when(item?.itemId) {
-            R.id.play -> toggleAnimation()
+        when (item?.itemId) {
+            R.id.play -> animationManager.toggleAnimation(validation_container)
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun toggleAnimation() {
-        if (endAnimation.isStart()) {
-            validation_container.transitionToEnd()
-        } else {
-            validation_container.transitionToStart()
-        }
+    override fun onSaveInstanceState(outState: Bundle?) {
+        animationManager.saveState(outState, validation_container)
+        super.onSaveInstanceState(outState)
     }
 }

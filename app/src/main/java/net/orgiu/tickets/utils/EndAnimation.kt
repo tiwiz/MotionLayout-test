@@ -4,7 +4,7 @@ import android.support.constraint.motion.MotionLayout
 
 class EndAnimation : MotionLayout.TransitionListener {
 
-    private var isStart = true
+    private var isStart: Boolean = true
 
     override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) = Unit
 
@@ -14,6 +14,10 @@ class EndAnimation : MotionLayout.TransitionListener {
 
     override fun onTransitionCompleted(target: MotionLayout?, p1: Int) {
         isStart = isStart.not()
+    }
+
+    fun setIsEnd() {
+        isStart = false
     }
 
     fun isStart() = isStart
