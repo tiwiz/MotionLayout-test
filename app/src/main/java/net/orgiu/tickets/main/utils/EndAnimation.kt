@@ -1,4 +1,4 @@
-package net.orgiu.tickets.utils
+package net.orgiu.tickets.main.utils
 
 import android.support.constraint.motion.MotionLayout
 

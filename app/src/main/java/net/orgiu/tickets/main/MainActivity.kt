@@ -1,11 +1,12 @@
-package net.orgiu.tickets
+package net.orgiu.tickets.main
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
-import net.orgiu.tickets.utils.EndAnimation
+import net.orgiu.tickets.R
+import net.orgiu.tickets.main.utils.EndAnimation
 
 class MainActivity : AppCompatActivity() {
 
